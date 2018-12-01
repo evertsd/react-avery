@@ -3,10 +3,10 @@ This library makes it easy to create labels which can be printed on-to a 10 labe
 
 ## Name tag story screenshots
 ### Print preview
-![Name tag print preview](https://imgur.com/lscW3vL)
+![Name tag print preview](https://i.imgur.com/lscW3vL.png)
 
 ### Avery sheet form
-![Avery sheet form](https://imgur.com/VwD2RU9)
+![Avery sheet form](https://i.imgur.com/VwD2RU9.png)
 
 # Main components
 Example:
