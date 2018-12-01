@@ -4,16 +4,16 @@ import { buildLabels, findNextLabelLocation, Layout, SHEET_LABEL_LOCATIONS } fro
 
 const initialState = {
     labels: buildLabels(),
-    selectedLabel: SHEET_LABEL_LOCATIONS[0],
+    selectedLocation: SHEET_LABEL_LOCATIONS[0],
 };
 
 export const withLabels = withStateHandlers(initialState, {
-    selectLabel: state => selectedLabel => ({ ...state, selectedLabel }),
-    updateLabel: ({ labels, selectedLabel }) => attrs => ({
+    selectLocation: state => selectedLocation => ({ ...state, selectedLocation }),
+    updateLabel: ({ labels, selectedLocation }) => attrs => ({
         labels: {
             ...labels,
-            [selectedLabel]: {
-                ...labels[selectedLabel],
+            [selectedLocation]: {
+                ...labels[selectedLocation],
                 ...attrs,
             },
         },
@@ -21,7 +21,7 @@ export const withLabels = withStateHandlers(initialState, {
 });
 
 class ControlledLayout extends React.Component {
-    shouldComponentUpdate = ({ selectedLabel }) => this.props.selectedLabel !== selectedLabel;
+    shouldComponentUpdate = ({ selectedLocation }) => this.props.selectedLocation !== selectedLocation;
 
     render = () => <Layout {...this.props} />;
 }
@@ -29,13 +29,13 @@ class ControlledLayout extends React.Component {
 const LayoutContext = React.createContext(undefined);
 
 export const LayoutContextProvider = (LayoutForm, LabelInsertComponent) => {
-    return withLabels(({ className, labels, selectLabel, selectedLabel, updateLabel, ...props }) => (
-        <LayoutContext.Provider value={{ labels, selectLabel, selectedLabel }}>
+    return withLabels(({ className, labels, selectLocation, selectedLocation, updateLabel, ...props }) => (
+        <LayoutContext.Provider value={{ labels, selectLocation, selectedLocation }}>
             <ControlledLayout
                 {...props}
                 className={className}
-                selectLabel={selectLabel}
-                selectedLabel={selectedLabel}
+                selectLocation={selectLocation}
+                selectedLocation={selectedLocation}
                 LabelInsertComponent={LabelInsertComponent}>
                 <LayoutForm updateLabel={updateLabel} />
             </ControlledLayout>
@@ -45,22 +45,22 @@ export const LayoutContextProvider = (LayoutForm, LabelInsertComponent) => {
 
 export const withLabelState = LabelInsert => {
     class LabelInsertWrapper extends React.Component {
-        shouldComponentUpdate = ({ selectedLabel, location }) => selectedLabel === location;
+        shouldComponentUpdate = ({ selectedLocation, location }) => selectedLocation === location;
 
         render = () => <LabelInsert {...this.props.label} />;
     }
 
     return ({ location }) => (
         <LayoutContext.Consumer>
-            {({ selectedLabel, labels }) => <LabelInsertWrapper selectedLabel={selectedLabel} location={location} label={labels[location]} />}
+            {({ selectedLocation, labels }) => <LabelInsertWrapper selectedLocation={selectedLocation} location={location} label={labels[location]} />}
         </LayoutContext.Consumer>
     );
 };
 
 export const withSelectedLabel = LayoutForm => props => (
     <LayoutContext.Consumer>
-        {({ labels, selectLabel, selectedLabel }) => (
-            <LayoutForm {...props} {...labels[selectedLabel]} selectNextLabel={() => selectLabel(findNextLabelLocation(selectedLabel))} />
+        {({ labels, selectLocation, selectedLocation }) => (
+            <LayoutForm {...props} {...labels[selectedLocation]} selectNextLabel={() => selectLocation(findNextLabelLocation(selectedLocation))} />
         )}
     </LayoutContext.Consumer>
 );
