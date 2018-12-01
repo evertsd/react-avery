@@ -1,0 +1,61 @@
+{
+  "name": "react-avery",
+  "version": "0.0.1",
+  "description": "React components and hoc to allow building and printing of Avery labels",
+  "main": "src/index.js",
+  "scripts": {
+    "link-local": "npm link react-avery",
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evertsd/react-avery.git"
+  },
+  "keywords": [
+    "avery",
+    "labels"
+  ],
+  "author": "Dosty Everts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evertsd/react-avery/issues"
+  },
+  "homepage": "https://github.com/evertsd/react-avery#readme",
+  "devDependencies": {
+    "@storybook/addon-actions": "^4.0.9",
+    "@storybook/addon-links": "^4.0.9",
+    "@storybook/addons": "^4.0.9",
+    "@storybook/react": "^4.0.9",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^5.2.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "jest": "^23.4.1",
+    "prettier": "^1.13.7",
+    "prettier-eslint-cli": "^4.7.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.0.7",
+    "recompose": "^0.27.1",
+    "redux": "^4.0.0",
+    "webpack": "^4.16.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "redux-actions": "^2.4.0",
+    "reselect": "^3.0.1"
+  }
+}

@@ -1,0 +1,36 @@
+{
+    "ecmaFeatures": {
+        "modules": true,
+        "arrowFunctions": true,
+        "classes": true
+    },
+    "env": {
+        "es6": true,
+        "jest": true
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "parser": "babel-eslint",
+    "plugins": ["react", "prettier"],
+    "rules": {
+        "comma-dangle": [1, "always-multiline"],
+        "comma-spacing": 1,
+        "comma-style": 1,
+        "indent": ["error", 4],
+        "prettier/prettier": [
+            1,
+            {
+                "singleQuote": true,
+                "trailingComma": "es5",
+                "jsxBracketSameLine": true,
+                "printWidth": 160,
+                "tabWidth": 4
+            }
+        ],
+        "react/display-name": 0,
+        "react/jsx-closing-bracket-location": [1, { "selfClosing": "tag-aligned", "nonEmpty": "after-props" }],
+        "react/jsx-uses-react": 1,
+        "react/jsx-uses-vars": 1,
+        "react/prop-types": 0,
+        "semi": [1, 'always']
+    }
+}
