@@ -1,12 +1,12 @@
 {
   "name": "react-avery",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React components and hoc to allow building and printing of Avery labels",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && babel src --out-dir lib",
     "clean": "rimraf lib",
-    "link-local": "npm link react-avery",
+    "link-local": "npm link react-avery@latest",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

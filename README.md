@@ -44,3 +44,11 @@ Layout by default renders the SheetPreview normally and SheetPrintView during pr
     style: object, // optional styles for Form wrapper
 }
 ```
+
+## Running storybook
+Ensure that react is installed globally, it's a peer dependency for `react-avery`
+```
+npm install -g react
+npm run link-local
+npm run storybook
+```
