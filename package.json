@@ -1,6 +1,6 @@
 {
   "name": "react-avery",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React components and hoc to allow building and printing of Avery labels",
   "main": "lib/index.js",
   "scripts": {
