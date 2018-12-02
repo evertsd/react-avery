@@ -1,9 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { StandardRectangle } from 'react-avery';
 
 import { Input, NameLabelInsert as NameInsert } from './library';
 import { LayoutContextProvider, withLabels, withLabelState, withSelectedLabel } from './library/LayoutStateHandlers';
-import { findNextLabelLocation, Layout } from '../src';
+
+const { findNextLabelLocation, Layout } = StandardRectangle;
 
 const ControlledNameInsert = withLabelState(NameInsert);
 const ControlledLayoutForm = withSelectedLabel(({ name, selectNextLabel, updateLabel }) => (

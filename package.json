@@ -1,9 +1,8 @@
 {
   "name": "react-avery",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React components and hoc to allow building and printing of Avery labels",
-  "main": "src/index.js",
-  "files": ["lib"],
+  "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && babel src --out-dir lib",
     "clean": "rimraf lib",

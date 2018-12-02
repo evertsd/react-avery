@@ -1,10 +1,9 @@
 import React from 'react';
-import { SheetPreview, SheetPrintView } from './Sheet';
 import PrintMediaQuery from './PrintMediaQuery';
 
-export const LayoutPrintView = ({ ...props }) => <SheetPrintView {...props} className="" style={{}} />;
+export const LayoutPrintView = SheetPrintView => ({ ...props }) => <SheetPrintView {...props} className="" style={{}} />;
 
-const Layout = ({ children, className, style, ...props }) => (
+const Layout = SheetPreview => ({ children, className, style, ...props }) => (
     <div className="flex justify-center pa3">
         <div className={className} style={style}>
             {children}
@@ -17,4 +16,4 @@ const Layout = ({ children, className, style, ...props }) => (
     </div>
 );
 
-export default PrintMediaQuery(Layout, LayoutPrintView);
+export default (SheetPreview, SheetPrintView) => PrintMediaQuery(Layout(SheetPreview), LayoutPrintView(SheetPrintView));

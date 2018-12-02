@@ -1,2 +1,1 @@
-export * from './components';
-export * from './schema';
+export * as StandardRectangle from './StandardRectangle';

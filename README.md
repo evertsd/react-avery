@@ -11,7 +11,9 @@ This library makes it easy to create labels which can be printed on-to a 10 labe
 # Main components
 Example:
 ```
-import { Sheet, Layout } from 'react-avery';
+import { StandardRectangle } from 'react-avery';
+
+const { Layout, Sheet } = StandardRectangle;
 ```
 
 ## `Sheet`
