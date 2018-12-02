@@ -1,1 +1,3 @@
-export * as StandardRectangle from './StandardRectangle';
+import * as StandardRectangle from './StandardRectangle';
+
+export { StandardRectangle };
