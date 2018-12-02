@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import Label, { BlankInsert, LabelRow } from './Label';
-import PrintMediaQuery from './PrintMediaQuery';
-import { SHEET_LABEL_LOCATIONS } from '../schema';
+import { SHEET_LABEL_LOCATIONS } from './schema';
+import PrintMediaQuery from '../PrintMediaQuery';
 
 const getEvenIndices = array =>
     Object.keys(array)

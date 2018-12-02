@@ -23,7 +23,7 @@ const InsertWrapper = ({ children, isSelected, onClick, preview }) => {
     );
 };
 
-export const BlankLabel = () => <React.Fragment>&nbsp;</React.Fragment>;
+export const BlankInsert = () => <React.Fragment>&nbsp;</React.Fragment>;
 
 export const Label = ({ children, isSelected, onClick, preview = true }) => (
     <div className="dib overflow-hidden" style={{ margin: '0 0.125em', height: '4em', width: '8em' }}>

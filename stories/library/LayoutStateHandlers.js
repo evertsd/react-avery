@@ -1,6 +1,8 @@
 import React from 'react';
+import { StandardRectangle } from 'react-avery';
 import { withStateHandlers } from 'recompose';
-import { buildLabels, findNextLabelLocation, Layout, SHEET_LABEL_LOCATIONS } from '../../src';
+
+const { buildLabels, findNextLabelLocation, Layout, SHEET_LABEL_LOCATIONS } = StandardRectangle;
 
 const initialState = {
     labels: buildLabels(),
