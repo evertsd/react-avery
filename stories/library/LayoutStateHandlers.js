@@ -1,26 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StandardRectangle } from 'react-avery';
-import { withStateHandlers } from 'recompose';
 
 const { buildLabels, findNextLabelLocation, Layout, SHEET_LABEL_LOCATIONS } = StandardRectangle;
 
-const initialState = {
-    labels: buildLabels(),
-    selectedLocation: SHEET_LABEL_LOCATIONS[0],
-};
+export const withLabels = () => {
+    const [selectedLocation, selectLocation] = useState(SHEET_LABEL_LOCATIONS[0]);
+    const [labels, setLabels] = useState(buildLabels());
 
-export const withLabels = withStateHandlers(initialState, {
-    selectLocation: state => selectedLocation => ({ ...state, selectedLocation }),
-    updateLabel: ({ labels, selectedLocation }) => attrs => ({
-        labels: {
+    const updateLabel = attrs =>
+        setLabels({
             ...labels,
             [selectedLocation]: {
                 ...labels[selectedLocation],
                 ...attrs,
             },
-        },
-    }),
-});
+        });
+
+    return { labels, selectLocation, selectedLocation, updateLabel };
+};
 
 class ControlledLayout extends React.Component {
     shouldComponentUpdate = ({ selectedLocation }) => this.props.selectedLocation !== selectedLocation;
@@ -31,18 +28,22 @@ class ControlledLayout extends React.Component {
 const LayoutContext = React.createContext(undefined);
 
 export const LayoutContextProvider = (LayoutForm, LabelInsertComponent) => {
-    return withLabels(({ className, labels, selectLocation, selectedLocation, updateLabel, ...props }) => (
-        <LayoutContext.Provider value={{ labels, selectLocation, selectedLocation }}>
-            <ControlledLayout
-                {...props}
-                className={className}
-                selectLocation={selectLocation}
-                selectedLocation={selectedLocation}
-                LabelInsertComponent={LabelInsertComponent}>
-                <LayoutForm updateLabel={updateLabel} />
-            </ControlledLayout>
-        </LayoutContext.Provider>
-    ));
+    return ({ className, ...props }) => {
+        const { labels, selectLocation, selectedLocation, updateLabel } = withLabels();
+
+        return (
+            <LayoutContext.Provider value={{ labels, selectLocation, selectedLocation }}>
+                <ControlledLayout
+                    {...props}
+                    className={className}
+                    selectLocation={selectLocation}
+                    selectedLocation={selectedLocation}
+                    LabelInsertComponent={LabelInsertComponent}>
+                    <LayoutForm updateLabel={updateLabel} />
+                </ControlledLayout>
+            </LayoutContext.Provider>
+        );
+    };
 };
 
 export const withLabelState = LabelInsert => {

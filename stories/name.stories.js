@@ -24,25 +24,29 @@ const ControlledLayoutForm = withSelectedLabel(({ name, selectNextLabel, updateL
 
 const ControlledNameStory = LayoutContextProvider(ControlledLayoutForm, ControlledNameInsert);
 
-const NameStory = withLabels(({ labels, selectedLocation, selectLocation, updateLabel }) => (
-    <Layout
-        className="w-20 mt3"
-        selectedLocation={selectedLocation}
-        selectLocation={selectLocation}
-        LabelInsertComponent={({ location }) => <NameInsert {...labels[location]} />}>
-        <Input
-            value={labels[selectedLocation].name}
-            onChange={e => updateLabel({ name: e.target.value })}
-            placeholder="Tell us your name"
-            onKeyDown={e => {
-                if (e.keyCode === 13 || e.keyCode === 9) {
-                    e.preventDefault();
-                    selectLocation(findNextLabelLocation(selectedLocation));
-                }
-            }}
-        />
-    </Layout>
-));
+const NameStory = () => {
+    const { labels, selectedLocation, selectLocation, updateLabel } = withLabels();
+
+    return (
+        <Layout
+            className="w-20 mt3"
+            selectedLocation={selectedLocation}
+            selectLocation={selectLocation}
+            LabelInsertComponent={({ location }) => <NameInsert {...labels[location]} />}>
+            <Input
+                value={labels[selectedLocation].name}
+                onChange={e => updateLabel({ name: e.target.value })}
+                placeholder="Tell us your name"
+                onKeyDown={e => {
+                    if (e.keyCode === 13 || e.keyCode === 9) {
+                        e.preventDefault();
+                        selectLocation(findNextLabelLocation(selectedLocation));
+                    }
+                }}
+            />
+        </Layout>
+    );
+};
 
 // eslint-disable-next-line no-undef
 storiesOf('Name tags', module)
