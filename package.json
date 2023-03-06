@@ -11,6 +11,10 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "engines": {
+    "npm": ">= 6.0.0 <9.0.0",
+    "node": ">= 14.0.0 <16.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/evertsd/react-avery.git"
