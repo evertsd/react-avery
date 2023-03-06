@@ -31,6 +31,6 @@
         "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 1,
         "react/prop-types": 0,
-        "semi": [1, 'always']
+        "semi": [1, "always"]
     }
 }

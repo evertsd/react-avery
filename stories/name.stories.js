@@ -1,7 +1,4 @@
-import { storiesOf } from '@storybook/react';
-import React from 'react';
 import { StandardRectangle } from 'react-avery';
-
 import { Input, NameLabelInsert as NameInsert } from './library';
 import { LayoutContextProvider, withLabels, withLabelState, withSelectedLabel } from './library/LayoutStateHandlers';
 
@@ -24,7 +21,11 @@ const ControlledLayoutForm = withSelectedLabel(({ name, selectNextLabel, updateL
 
 const ControlledNameStory = LayoutContextProvider(ControlledLayoutForm, ControlledNameInsert);
 
-const NameStory = () => {
+export function _ControlledNameStory() {
+    return <ControlledNameStory className="mt3" />
+}
+
+export function _NameStory() {
     const { labels, selectedLocation, selectLocation, updateLabel } = withLabels();
 
     return (
@@ -48,7 +49,8 @@ const NameStory = () => {
     );
 };
 
-// eslint-disable-next-line no-undef
-storiesOf('Name tags', module)
-    .add('uncontrolled', () => <NameStory />)
-    .add('controlled', () => <ControlledNameStory className="mt3" />);
+export default {
+    title: 'Name tags',
+    component: Layout
+
+}

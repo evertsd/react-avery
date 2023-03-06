@@ -1,4 +1,9 @@
 {
-    "presets": ["react", "env"],
-    "plugins": ["transform-object-rest-spread", "transform-export-extensions", "transform-class-properties"]
+    "presets": [
+        ["@babel/preset-env", {
+            "useBuiltIns": "entry",
+            "corejs": "3.22"
+        }],
+        "@babel/preset-react"
+    ]
 }
